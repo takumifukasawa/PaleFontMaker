@@ -1,4 +1,5 @@
-import { ShapeCharInfoBase, ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontBase } from './shapeFont.ts';
+// import {renderShapeFontCircuit} from "./renderShapeFontCircuit.ts";
 
 // const L = "l"; // line
 export const FontCircuitDotTypeDot = "d"; // dot
@@ -7,16 +8,20 @@ export const FontCircuitDotTypeStrokeDot = "sd";  // stroke dot
 // type DesignType = 'l' | 'd' | 'sd';
 type DesignType = 'd' | 'sd';
 
-type Path = [number, number, DesignType?];
+type AnchorPoint = [number, number, DesignType?];
 
-export type ShapeFontCircuitCharInfo = ShapeCharInfoBase & {
-    char: string;
-    paths: Path[][];
-};
+type Path = AnchorPoint[];
 
-export type ShapeFontCircuit = ShapeFontBase<ShapeFontCircuitCharInfo> & {
+// export type ShapeFontCircuitCharInfo = ShapeCharInfoBase & {
+//     char: string;
+//     paths: Path[];
+// };
+
+export type ShapeFontCircuitChar = Path[];
+
+export type ShapeFontCircuit = ShapeFontBase<ShapeFontCircuitChar> & {
     lineWidth: number;
     dotLineWidth: number;
     dotRadius: number;
-    charInfo: ShapeFontCircuitCharInfo[];
+    charInfo: Map<string, ShapeFontCircuitChar>
 };

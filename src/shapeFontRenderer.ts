@@ -1,7 +1,7 @@
 import { buildShapeFontAtlas, ShapeFontAtlas } from './buildShaderFontAtlas.ts';
-import { ShapeCharInfoBase, ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontBase } from './shapeFont.ts';
 
-export type ShapeFontRenderer<U extends ShapeCharInfoBase, T extends ShapeFontBase<U>> = {
+export type ShapeFontRenderer<U, T extends ShapeFontBase<U>> = {
     shapeFont: T;
     shapeFontAtlas: ShapeFontAtlas;
     canvasWidth: number;
@@ -10,7 +10,7 @@ export type ShapeFontRenderer<U extends ShapeCharInfoBase, T extends ShapeFontBa
     ctx: CanvasRenderingContext2D;
 };
 
-export const createShapeFontRenderer: <U extends ShapeCharInfoBase, T extends ShapeFontBase<U>>(
+export const createShapeFontRenderer: <U, T extends ShapeFontBase<U>>(
     srcCanvas: HTMLCanvasElement | null,
     shapeFont: T,
     canvasWidth: number,

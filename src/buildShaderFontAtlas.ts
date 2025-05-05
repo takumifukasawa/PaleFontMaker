@@ -1,4 +1,4 @@
-import { ShapeCharInfoBase, ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontCharBase, ShapeFontBase } from './shapeFont.ts';
 
 export type ShapeFontAtlas = {
     textureWidth: number;
@@ -14,14 +14,14 @@ export type ShapeFontAtlas = {
     ratio: number;
 };
 
-export const buildShapeFontAtlas = <T extends ShapeCharInfoBase>(
+export const buildShapeFontAtlas = <T extends ShapeFontCharBase>(
     shapeFont: ShapeFontBase<T>,
     textureWidth: number,
     textureHeight: number
 ): ShapeFontAtlas => {
     const { colNum } = shapeFont;
-    const charNum = shapeFont.charInfo.length;
-    const charset = shapeFont.charInfo.map((charInfo) => charInfo.char).join('');
+    const charNum = shapeFont.charInfo.size;
+    const charset = [...shapeFont.charInfo.keys()].join('');
     const rowNum = Math.ceil(charNum / colNum);
     const fontAspect = shapeFont.rawCellWidth / shapeFont.rawCellHeight; // w / h
     const cellWidth = Math.floor(textureWidth / colNum);

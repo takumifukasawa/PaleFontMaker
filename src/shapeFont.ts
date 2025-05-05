@@ -1,10 +1,6 @@
-export type ShapeCharInfoBase = {
-    char: string;
-};
-
-export type ShapeFontBase<T extends ShapeCharInfoBase> = {
+export type ShapeFontBase<T> = {
     rawCellWidth: number;
     rawCellHeight: number;
     colNum: number;
-    charInfo: T[];
+    charInfo: Map<string, T>;
 };

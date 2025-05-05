@@ -1,16 +1,15 @@
 import { ShapeFontRenderer } from './shapeFontRenderer.ts';
-import { ShapeFontCircuit, ShapeFontCircuitCharInfo } from './shapeFontCircuit.ts';
+import { ShapeFontCircuit, ShapeFontCircuitChar } from './shapeFontCircuit.ts';
 
 const renderChar: (
     ctx: CanvasRenderingContext2D,
     shapeFont: ShapeFontCircuit,
-    charInfo: ShapeFontCircuitCharInfo,
+    paths: ShapeFontCircuitChar,
     srcX: number,
     srcY: number,
     ratio: number
-) => void = (ctx, shapeFont, charInfo, srcX, srcY, ratio) => {
+) => void = (ctx, shapeFont, paths, srcX, srcY, ratio) => {
     const { lineWidth, dotLineWidth, dotRadius } = shapeFont;
-    const { paths } = charInfo;
 
     const dots: [number, number][] = [];
     const strokeDots: [number, number][] = [];
@@ -162,24 +161,36 @@ const renderChar: (
     // }
 };
 
-export const renderShapeFontCircuit: (shapeFontRenderer: ShapeFontRenderer<ShapeFontCircuit>) => void = (shapeFontRenderer) => {
+export const renderShapeFontCircuit: (shapeFontRenderer: ShapeFontRenderer<ShapeFontCircuitChar, ShapeFontCircuit>) => void = (shapeFontRenderer) => {
     const { shapeFont, shapeFontAtlas, ctx, canvasWidth, canvasHeight } = shapeFontRenderer;
-    const { rowNum, colNum, charNum, cellWidth, cellHeight, ratio } = shapeFontAtlas;
+    const { colNum, charNum, cellWidth, cellHeight, ratio } = shapeFontAtlas;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-    for (let y = 0; y < rowNum; y++) {
-        for (let x = 0; x < colNum; x++) {
-            const charIndex = y * colNum + x;
-            if (charIndex >= charNum) {
-                break;
-            }
-            const cellX = x * cellWidth;
-            const cellY = y * cellHeight;
-            const charInfo = shapeFont.charInfo[charIndex];
-            ctx.save();
-            renderChar(ctx, shapeFont, charInfo, cellX, cellY, ratio);
-            ctx.restore();
-        }
+    let  currentIndex = 0;
+    const charInfoValues = shapeFont.charInfo.values();
+    for (let charInfo of charInfoValues) {
+        const charIndex = currentIndex % charNum;
+        const cellX = (charIndex % colNum) * cellWidth;
+        const cellY = Math.floor(charIndex / colNum) * cellHeight;
+        ctx.save();
+        renderChar(ctx, shapeFont, charInfo, cellX, cellY, ratio);
+        ctx.restore();
+        currentIndex++;
     }
+   
+    // for (let y = 0; y < rowNum; y++) {
+    //     for (let x = 0; x < colNum; x++) {
+    //         const charIndex = y * colNum + x;
+    //         if (charIndex >= charNum) {
+    //             break;
+    //         }
+    //         const cellX = x * cellWidth;
+    //         const cellY = y * cellHeight;
+    //         const charInfo = shapeFont.charInfo[charIndex];
+    //         ctx.save();
+    //         renderChar(ctx, shapeFont, charInfo, cellX, cellY, ratio);
+    //         ctx.restore();
+    //     }
+    // }
 };
