@@ -1,5 +1,5 @@
-import { buildShapeFontAtlas, ShapeFontAtlas } from './buildShaderFontAtlas.ts';
-import { ShapeFontBase } from './shapeFont.ts';
+import { buildShapeFontAtlas, ShapeFontAtlas } from '@/PaleGL/shapeFont/buildShaderFontAtlas.ts';
+import { ShapeFontBase } from '@/PaleGL/shapeFont/shapeFont.ts';
 
 export type ShapeFontRenderer<U, T extends ShapeFontBase<U>> = {
     shapeFont: T;

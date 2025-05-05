@@ -1,4 +1,4 @@
-import { ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontBase } from '@/PaleGL/shapeFont/shapeFont.ts';
 
 export type ShapeFontAtlas = {
     textureWidth: number;

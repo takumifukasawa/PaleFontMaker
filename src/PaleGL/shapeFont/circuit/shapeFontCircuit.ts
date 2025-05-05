@@ -1,4 +1,4 @@
-import { ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontBase } from '@/PaleGL/shapeFont/shapeFont.ts';
 
 // export const FontCircuitDotTypeDot = 'd'; // dot
 // export const FontCircuitDotTypeStrokeDot = 'sd'; // stroke dot

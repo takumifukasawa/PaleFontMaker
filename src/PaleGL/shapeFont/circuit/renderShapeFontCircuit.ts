@@ -1,8 +1,5 @@
-import { ShapeFontRenderer } from './shapeFontRenderer.ts';
-import {
-    ShapeFontCircuit,
-    ShapeFontCircuitChar,
-} from './shapeFontCircuit.ts';
+import { ShapeFontRenderer } from '@/PaleGL/shapeFont/shapeFontRenderer.ts';
+import { ShapeFontCircuit, ShapeFontCircuitChar } from '@/PaleGL/shapeFont/circuit/shapeFontCircuit.ts';
 
 const renderChar: (
     ctx: CanvasRenderingContext2D,
@@ -114,9 +111,9 @@ export const renderShapeFontCircuit: (
     //         }
     //         const cellX = x * cellWidth;
     //         const cellY = y * cellHeight;
-    //         const charInfo = shapeFont.charInfo[charIndex];
+    //         const charInfo = circuit.charInfo[charIndex];
     //         ctx.save();
-    //         renderChar(ctx, shapeFont, charInfo, cellX, cellY, ratio);
+    //         renderChar(ctx, circuit, charInfo, cellX, cellY, ratio);
     //         ctx.restore();
     //     }
     // }
