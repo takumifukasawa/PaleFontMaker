@@ -1,8 +1,8 @@
-import { ShapeFont } from './shapeFont.ts';
-import { buildShapeFontAtlas, ShapeFontAtlas } from './renderShapeFont.ts';
+import { buildShapeFontAtlas, ShapeFontAtlas } from './buildShaderFontAtlas.ts';
+import { ShapeCharInfoBase, ShapeFontBase } from './shapeFont.ts';
 
-export type ShapeFontRenderer = {
-    shapeFont: ShapeFont;
+export type ShapeFontRenderer<U extends ShapeCharInfoBase, T extends ShapeFontBase<U>> = {
+    shapeFont: T;
     shapeFontAtlas: ShapeFontAtlas;
     canvasWidth: number;
     canvasHeight: number;
@@ -10,14 +10,17 @@ export type ShapeFontRenderer = {
     ctx: CanvasRenderingContext2D;
 };
 
-export const createShapeFontRenderer: (
+export const createShapeFontRenderer: <U extends ShapeCharInfoBase, T extends ShapeFontBase<U>>(
     srcCanvas: HTMLCanvasElement | null,
-    shapeFont: ShapeFont,
+    shapeFont: T,
     canvasWidth: number,
     canvasHeight: number
-) => ShapeFontRenderer = (srcCanvas, shapeFont, canvasWidth, canvasHeight) => {
+) => ShapeFontRenderer<U, T> = (srcCanvas, shapeFont, canvasWidth, canvasHeight) => {
     const canvas = srcCanvas || document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
 
     const shapeFontAtlas = buildShapeFontAtlas(shapeFont, canvasWidth, canvasHeight);
 

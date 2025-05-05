@@ -1,16 +1,10 @@
-export type ShapeCharInfo = {
+export type ShapeCharInfoBase = {
     char: string;
-    lines: number[][]; // fromX, fromY,,,
-    dots?: number[]; // fromX, fromY
-    strokeDots?: number[]; // fromX, fromY
 };
 
-export type ShapeFont = {
+export type ShapeFontBase<T extends ShapeCharInfoBase> = {
     rawCellWidth: number;
     rawCellHeight: number;
     colNum: number;
-    lineWidth: number;
-    dotLineWidth: number;
-    dotRadius: number;
-    charInfo: ShapeCharInfo[];
+    charInfo: T[];
 };
