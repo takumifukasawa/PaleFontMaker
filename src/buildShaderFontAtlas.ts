@@ -1,4 +1,4 @@
-import { ShapeFontCharBase, ShapeFontBase } from './shapeFont.ts';
+import { ShapeFontBase } from './shapeFont.ts';
 
 export type ShapeFontAtlas = {
     textureWidth: number;
@@ -14,7 +14,7 @@ export type ShapeFontAtlas = {
     ratio: number;
 };
 
-export const buildShapeFontAtlas = <T extends ShapeFontCharBase>(
+export const buildShapeFontAtlas = <T>(
     shapeFont: ShapeFontBase<T>,
     textureWidth: number,
     textureHeight: number
