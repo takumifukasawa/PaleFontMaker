@@ -1,10 +1,10 @@
 import { ShapeFontBase } from './shapeFont.ts';
 
-export const FontCircuitDotTypeDot = 'd'; // dot
-export const FontCircuitDotTypeStrokeDot = 'sd'; // stroke dot
-export const FontCircuitClosePath = 'cp'; // close path
+// export const FontCircuitDotTypeDot = 'd'; // dot
+// export const FontCircuitDotTypeStrokeDot = 'sd'; // stroke dot
+// export const FontCircuitClosePath = 'cp'; // close path
 
-type DesignType = 'd' | 'sd' | 'cp'; // dots, stroke dot, close path
+// type DesignType = 'd' | 'sd' | 'cp'; // dots, stroke dot, close path
 
 // type Coord = [number, number];
 // type Line = [number, number]; // index, index
