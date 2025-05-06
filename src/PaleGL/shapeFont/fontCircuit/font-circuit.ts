@@ -1,4 +1,4 @@
-import { ShapeFontCircuit } from '@/PaleGL/shapeFont/circuit/shapeFontCircuit.ts';
+import { ShapeFontCircuit } from '@/PaleGL/shapeFont/fontCircuit/shapeFontCircuit.ts';
 
 const ty = 19; // yの上端
 const by = 109; // yの下端

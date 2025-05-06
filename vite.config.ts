@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
+import tsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-    resolve: {
-        alias: [{ find: '@', replacement: '/src' }],
-    },
+    plugins: [tsConfigPaths()],
 });
