@@ -1,13 +1,13 @@
-import { fontCircuit } from '@/PaleGL/shapeFont/fontCircuit/font-circuit.ts';
 import { createShapeFontRenderer } from '@/PaleGL/shapeFont/shapeFontRenderer.ts';
-import { renderShapeFontCircuit } from '@/PaleGL/shapeFont/fontCircuit/renderShapeFontCircuit.ts';
+import { renderShapeFontCircuit } from '@/PaleGL/shapeFont/shapeFontCircuit/renderShapeFontCircuit.ts';
+import {shapeFontCircuitService} from "@/PaleGL/shapeFont/shapeFontCircuit/shapeFontCircuitService.ts";
 
 const canvasWidth = 4096;
 const canvasHeight = canvasWidth / 4;
 
 const canvas = document.getElementById('js-canvas') as HTMLCanvasElement;
 
-const shapeFontRenderer = createShapeFontRenderer(canvas, fontCircuit, canvasWidth, canvasHeight);
+const shapeFontRenderer = createShapeFontRenderer(shapeFontCircuitService, canvas, canvasWidth, canvasHeight);
 
 const tick = () => {
     renderShapeFontCircuit(shapeFontRenderer);

@@ -1,11 +1,25 @@
-import { ShapeFontCircuit } from '@/PaleGL/shapeFont/fontCircuit/shapeFontCircuit.ts';
+import { ShapeFontBase } from '@/PaleGL/shapeFont/shapeFont.ts';
+
+export type ShapeFontCircuitChar = [
+    number[], // x, y ... : 2要素ずつ区切る
+    number[][], // lines: fromIndex, toIndex ... : 2要素ずつ区切る. 末尾が-1ならclosePath
+    number[], // dot indices
+    number[], // stroke dot indices
+];
+
+export type ShapeFontCircuit = ShapeFontBase<ShapeFontCircuitChar> & {
+    lineWidth: number;
+    dotLineWidth: number;
+    dotRadius: number;
+    charInfo: Map<string, ShapeFontCircuitChar>;
+};
 
 const ty = 19; // yの上端
 const by = 109; // yの下端
 
 const closePathIndex = -1;
 
-export const fontCircuit: ShapeFontCircuit = {
+export const shapeFontCircuit: ShapeFontCircuit = {
     rawCellWidth: 91,
     rawCellHeight: 150,
     colNum: 18,
@@ -117,7 +131,7 @@ export const fontCircuit: ShapeFontCircuit = {
         [
             'E',
             [
-                // corrds
+                // coords
                 // prettier-ignore
                 [
                     71, ty, // 0: 右上
