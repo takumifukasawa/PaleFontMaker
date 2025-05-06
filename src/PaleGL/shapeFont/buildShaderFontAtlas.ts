@@ -20,8 +20,8 @@ export const buildShapeFontAtlas = <T>(
     textureHeight: number
 ): ShapeFontAtlas => {
     const { colNum } = shapeFont;
-    const charNum = shapeFont.charInfo.size;
-    const charset = [...shapeFont.charInfo.keys()].join('');
+    const charNum = shapeFont.charInfo.length;
+    const charset = shapeFont.charInfo.map(([key,,]) => key).join('');
     const rowNum = Math.ceil(charNum / colNum);
     const fontAspect = shapeFont.rawCellWidth / shapeFont.rawCellHeight; // w / h
     const cellWidth = Math.floor(textureWidth / colNum);

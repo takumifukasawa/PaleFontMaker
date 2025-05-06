@@ -92,8 +92,8 @@ export const renderShapeFontCircuit: (
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     let currentIndex = 0;
-    const charInfoValues = shapeFont.charInfo.values();
-    for (let charInfo of charInfoValues) {
+    for (let i = 0; i < shapeFont.charInfo.length; i++) {
+        const [, charInfo] = shapeFont.charInfo[i];
         const charIndex = currentIndex % charNum;
         const cellX = (charIndex % colNum) * cellWidth;
         const cellY = Math.floor(charIndex / colNum) * cellHeight;

@@ -1,6 +1,6 @@
 import { createShapeFontRenderer } from '@/PaleGL/shapeFont/shapeFontRenderer.ts';
 import { renderShapeFontCircuit } from '@/PaleGL/shapeFont/shapeFontCircuit/renderShapeFontCircuit.ts';
-import {shapeFontCircuitService} from "@/PaleGL/shapeFont/shapeFontCircuit/shapeFontCircuitService.ts";
+import { shapeFontCircuitService } from '@/PaleGL/shapeFont/shapeFontCircuit/shapeFontCircuitService.ts';
 
 const canvasWidth = 4096;
 const canvasHeight = canvasWidth / 4;

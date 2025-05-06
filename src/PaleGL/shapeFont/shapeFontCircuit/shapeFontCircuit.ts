@@ -11,7 +11,7 @@ export type ShapeFontCircuit = ShapeFontBase<ShapeFontCircuitChar> & {
     lineWidth: number;
     dotLineWidth: number;
     dotRadius: number;
-    charInfo: Map<string, ShapeFontCircuitChar>;
+    charInfo: [string, ShapeFontCircuitChar][];
 };
 
 const ty = 19; // yの上端
@@ -26,7 +26,7 @@ export const shapeFontCircuit: ShapeFontCircuit = {
     lineWidth: 6,
     dotLineWidth: 4,
     dotRadius: 5,
-    charInfo: new Map([
+    charInfo: [
         [
             'A',
             [
@@ -932,5 +932,5 @@ export const shapeFontCircuit: ShapeFontCircuit = {
                 [0],
             ],
         ],
-    ]),
+    ],
 };
