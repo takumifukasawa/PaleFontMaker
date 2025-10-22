@@ -3,7 +3,7 @@ import { renderShapeFontCircuit } from '@/PaleGL/shapeFont/shapeFontCircuit/rend
 import { shapeFontCircuitService } from '@/PaleGL/shapeFont/shapeFontCircuit/shapeFontCircuitService.ts';
 
 const canvasWidth = 4096;
-const canvasHeight = canvasWidth / 4;
+const canvasHeight = canvasWidth / 2;
 
 const canvas = document.getElementById('js-canvas') as HTMLCanvasElement;
 
